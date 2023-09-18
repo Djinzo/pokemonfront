@@ -29,22 +29,24 @@ function PokemonComponent() {
                 next={fetchMore}
                 hasMore={pokemon.pokemons.length !== 1281}
                 loader={<></>}
-                className="grid gap-4 grid-cols-4 p-11 "
+                className="grid p-11 grid-cols-{auto-fill}"
             >
-                {pokemon.pokemons.map((pokemon: Pokemon, id: number) => (
-                    <div
-                        key={id}
-                        className="flex gap-5 font-bold text-xl items-center border border-gray-300 p-3 rounded"
-                        onClick={() => handleClick(pokemon)}
-                    >
-                        <img
-                            alt={pokemon.name}
-                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id + 1
-                                }.png`}
-                        />
-                        {pokemon.name}
-                    </div>
-                ))}
+                <div className="flex flex-wrap justify-between gap-5">
+                    {pokemon.pokemons.map((pokemon: Pokemon, id: number) => (
+                        <div
+                            key={id}
+                            className="flex  font-bold text-xl items-center border border-gray-300 p-3 rounded w-[250px] "
+                            onClick={() => handleClick(pokemon)}
+                        >
+                            <img
+                                alt={pokemon.name}
+                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id + 1
+                                    }.png`}
+                            />
+                            {pokemon.name}
+                        </div>
+                    ))}
+                </div>
             </InfiniteScroll>
         </div>
     );
